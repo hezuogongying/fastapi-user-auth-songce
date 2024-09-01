@@ -1,0 +1,80 @@
+digraph G {
+concentrate=true;
+splines="ortho";
+rankdir="LR";
+subgraph legend{
+    rank = min;
+    label = "legend";
+    Legend [shape=none, margin=0, label = <
+        <table cellspacing="0" cellpadding="0" border="1"><tr><td>Code2flow Legend</td></tr><tr><td>
+        <table cellspacing="0">
+        <tr><td>Regular function</td><td width="50px" bgcolor='#cccccc'></td></tr>
+        <tr><td>Trunk function (nothing calls this)</td><td bgcolor='#966F33'></td></tr>
+        <tr><td>Leaf function (this calls nothing else)</td><td bgcolor='#6db33f'></td></tr>
+        <tr><td>Function call</td><td><font color='black'>&#8594;</font></td></tr>
+        </table></td></tr></table>
+        >];
+}node_98fa615e [label="0: (global)()" name="env::(global)" shape="rect" style="rounded,filled" fillcolor="#966F33" ];
+node_afa72086 [label="31: run_migrations_offline()" name="env::run_migrations_offline" shape="rect" style="rounded,filled" fillcolor="#6db33f" ];
+node_66f106d5 [label="83: __init__()" name="full_ai_unit_lc240817::CallChatAPI.__init__" shape="rect" style="rounded,filled" fillcolor="#6db33f" ];
+node_93eb7779 [label="99: _select_method()" name="full_ai_unit_lc240817::CallChatAPI._select_method" shape="rect" style="rounded,filled" fillcolor="#6db33f" ];
+node_5ef6d0d1 [label="86: call_chat_api()" name="full_ai_unit_lc240817::CallChatAPI.call_chat_api" shape="rect" style="rounded,filled" fillcolor="#966F33" ];
+node_40eac869 [label="157: __init__()" name="full_ai_unit_lc240817::CaseAnalyzer.__init__" shape="rect" style="rounded,filled" fillcolor="#966F33" ];
+node_ec4036bd [label="408: __init__()" name="full_ai_unit_lc240817::EvidenceAnalyzer.__init__" shape="rect" style="rounded,filled" fillcolor="#966F33" ];
+node_b7899e03 [label="422: analyze()" name="full_ai_unit_lc240817::EvidenceAnalyzer.analyze" shape="rect" style="rounded,filled" fillcolor="#966F33" ];
+node_b4f94d29 [label="544: check_evidence_valid_gpt()" name="full_ai_unit_lc240817::EvidenceAnalyzer.check_evidence_valid_gpt" shape="rect" style="rounded,filled" fillcolor="#966F33" ];
+node_8e87f1d3 [label="470: split_analysis()" name="full_ai_unit_lc240817::EvidenceAnalyzer.split_analysis" shape="rect" style="rounded,filled" fillcolor="#6db33f" ];
+node_884f0994 [label="33: check_ip()" name="full_ai_unit_lc240817::check_ip" shape="rect" style="rounded,filled" fillcolor="#6db33f" ];
+node_4a87a019 [label="65: convert_text()" name="full_ai_unit_lc240817::convert_text" shape="rect" style="rounded,filled" fillcolor="#6db33f" ];
+node_786db47e [label="47: write_log()" name="full_ai_unit_lc240817::write_log" shape="rect" style="rounded,filled" fillcolor="#cccccc" ];
+node_98fa615e -> node_afa72086 [color="#D55E00" penwidth="2"];
+node_5ef6d0d1 -> node_93eb7779 [color="#E69F00" penwidth="2"];
+node_5ef6d0d1 -> node_786db47e [color="#E69F00" penwidth="2"];
+node_5ef6d0d1 -> node_786db47e [color="#E69F00" penwidth="2"];
+node_40eac869 -> node_884f0994 [color="#E69F00" penwidth="2"];
+node_ec4036bd -> node_66f106d5 [color="#0072B2" penwidth="2"];
+node_ec4036bd -> node_884f0994 [color="#0072B2" penwidth="2"];
+node_b7899e03 -> node_8e87f1d3 [color="#009E73" penwidth="2"];
+node_b4f94d29 -> node_884f0994 [color="#E69F00" penwidth="2"];
+node_786db47e -> node_4a87a019 [color="#D55E00" penwidth="2"];
+subgraph cluster_2bcccd3e {
+    node_afa72086 node_98fa615e;
+    label="File: env";
+    name="env";
+    style="filled";
+    graph[style=dotted];
+};
+subgraph cluster_388ab1c4 {
+    node_884f0994 node_786db47e node_4a87a019;
+    label="File: full_ai_unit_lc240817";
+    name="full_ai_unit_lc240817";
+    style="filled";
+    graph[style=dotted];
+    subgraph cluster_81602fe6 {
+        node_66f106d5 node_5ef6d0d1 node_93eb7779;
+        label="Class: CallChatAPI";
+        name="CallChatAPI";
+        style="filled";
+        graph[style=dotted];
+    };
+    subgraph cluster_1cf50222 {
+        node_40eac869;
+        label="Class: CaseAnalyzer";
+        name="CaseAnalyzer";
+        style="filled";
+        graph[style=dotted];
+    };
+    subgraph cluster_9b8b501f {
+        node_ec4036bd node_b7899e03 node_8e87f1d3 node_b4f94d29;
+        label="Class: EvidenceAnalyzer";
+        name="EvidenceAnalyzer";
+        style="filled";
+        graph[style=dotted];
+    };
+};
+}
+
+rankdir=LR;
+nodesep=2.0;
+ranksep=3.0;
+splines=ortho;

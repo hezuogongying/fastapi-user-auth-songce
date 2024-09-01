@@ -1,0 +1,143 @@
+{
+    "type": "page",
+    "title": "用户界面",
+    "body": [
+      {
+        "type": "service",
+        "body": {
+          "type": "grid",
+          "columns": [
+            {
+              "type": "container",
+              "body": [
+                {
+                  "type": "select",
+                  "label": "案件选择",
+                  "placeholder": "请选择案件",
+                  "options": [
+                    {
+                      "label": "李四诉张三打人",
+                      "value": "case1"
+                    }
+                  ],
+                  "addable": true,
+                  "labelField": "label",
+                  "valueField": "value"
+                }
+              ]
+            },
+            {
+              "type": "container",
+              "style": {
+                "display": "flex",
+                "flexDirection": "column",
+                "alignItems": "center",
+                "justifyContent": "center",
+                "marginLeft": "10px"
+              },
+              "body": [
+                {
+                  "type": "button",
+                  "label": "案件分析",
+                  "actionType": "submit",
+                  "level": "primary",
+                  "style": {
+                    "width": "150px",
+                    "marginBottom": "10px"
+                  }
+                },
+                {
+                  "type": "button",
+                  "label": "类案检索",
+                  "actionType": "submit",
+                  "level": "primary",
+                  "style": {
+                    "width": "150px"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "container",
+              "style": {
+                "marginLeft": "auto",
+                "display": "flex",
+                "alignItems": "center",
+                "border": "1px solid #ccc",
+                "padding": "5px",
+                "borderRadius": "5px",
+                "backgroundColor": "#f9f9f9"
+              },
+              "body": [
+                {
+                  "type": "image",
+                  "src": "https://via.placeholder.com/40",
+                  "className": "user-image",
+                  "style": {
+                    "borderRadius": "50%",
+                    "marginRight": "10px"
+                  }
+                },
+                {
+                  "type": "tpl",
+                  "tpl": "<strong>用户ID</strong><br>剩余次数: N/A"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "type": "form",
+        "title": "",
+        "controls": [
+          {
+            "type": "textarea",
+            "label": "请输入案件描述",
+            "name": "case_description",
+            "placeholder": "请输入案件描述",
+            "required": true,
+            "rows": 5
+          },
+          {
+            "type": "container",
+            "style": {
+              "display": "flex",
+              "alignItems": "center",
+              "marginTop": "10px"
+            },
+            "body": [
+              {
+                "type": "file",
+                "name": "file_upload",
+                "label": "",
+                "btnLabel": "",
+                "accept": ".pdf,.doc,.docx",
+                "asBlob": true,
+                "drag": true,
+                "uploadType": "fileReceptor",
+                "receptor": "upload",
+                "autoUpload": false,
+                "style": {
+                  "border": "1px dashed #ccc",
+                  "padding": "20px",
+                  "borderRadius": "5px"
+                }
+              },
+              {
+                "type": "button",
+                "label": "开始分析",
+                "actionType": "submit",
+                "level": "primary",
+                "style": {
+                  "marginLeft": "10px",
+                  "padding": "10px 20px"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

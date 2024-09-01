@@ -1,0 +1,48 @@
+digraph G {
+concentrate=true;
+splines="ortho";
+rankdir="LR";
+subgraph legend{
+    rank = min;
+    label = "legend";
+    Legend [shape=none, margin=0, label = <
+        <table cellspacing="0" cellpadding="0" border="1"><tr><td>Code2flow Legend</td></tr><tr><td>
+        <table cellspacing="0">
+        <tr><td>Regular function</td><td width="50px" bgcolor='#cccccc'></td></tr>
+        <tr><td>Trunk function (nothing calls this)</td><td bgcolor='#966F33'></td></tr>
+        <tr><td>Leaf function (this calls nothing else)</td><td bgcolor='#6db33f'></td></tr>
+        <tr><td>Function call</td><td><font color='black'>&#8594;</font></td></tr>
+        </table></td></tr></table>
+        >];
+}node_d30f4737 [label="107: get_select()" name="admin::ArticleAdmin.get_select" shape="rect" style="rounded,filled" fillcolor="#cccccc" ];
+node_3162a9ec [label="111: on_create_pre()" name="admin::ArticleAdmin.on_create_pre" shape="rect" style="rounded,filled" fillcolor="#cccccc" ];
+node_962d36b5 [label="29: __init__()" name="admin::BlogApp.__init__" shape="rect" style="rounded,filled" fillcolor="#cccccc" ];
+node_d30f4737 -> node_d30f4737 [color="#CC79A7" penwidth="2"];
+node_3162a9ec -> node_3162a9ec [color="#F0E442" penwidth="2"];
+node_962d36b5 -> node_962d36b5 [color="#0072B2" penwidth="2"];
+subgraph cluster_252506a0 {
+    label="File: admin";
+    name="admin";
+    style="filled";
+    graph[style=dotted];
+    subgraph cluster_079c273a {
+        node_962d36b5;
+        label="Class: BlogApp";
+        name="BlogApp";
+        style="filled";
+        graph[style=dotted];
+    };
+    subgraph cluster_74be02ae {
+        node_d30f4737 node_3162a9ec;
+        label="Class: ArticleAdmin";
+        name="ArticleAdmin";
+        style="filled";
+        graph[style=dotted];
+    };
+};
+}
+
+rankdir=LR;
+nodesep=2.0;
+ranksep=3.0;
+splines=ortho;

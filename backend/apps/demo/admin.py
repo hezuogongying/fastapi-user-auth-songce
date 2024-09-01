@@ -25,5 +25,5 @@ class DemoApp(admin.AdminApp):
 
 @site.register_admin
 class AmisEditorAdmin(admin.IframeAdmin):
-    page_schema = amis.PageSchema(label="AmisEditorDemo", icon="fa fa-edit", sort=-100)
-    src = "https://aisuda.github.io/amis-editor-demo/"
+    page_schema = amis.PageSchema(label="可视化设计器", icon="fa fa-edit", sort=-100)
+    src = "https://aisuda.github.io/amis-editor-demo/demo-6.7.0/index.html"

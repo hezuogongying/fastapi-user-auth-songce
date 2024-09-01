@@ -4,20 +4,46 @@ from fastapi import FastAPI
 from fastapi_amis_admin_nav.admin import NavPageAdmin
 from sqlmodel import SQLModel
 from starlette.responses import RedirectResponse
+import importlib
+from starlette.requests import Request
+
 
 # 创建FastAPI实例
+settings.version = '0.8.1'
 app = FastAPI(debug=settings.debug)
-
-# 安装应用demo
-from apps import demo
-
-demo.setup(app)
-# 安装应用blog
-from apps import blog
-
-blog.setup(app)
-
 site.register_admin(NavPageAdmin)
+
+# from fastapi_user_auth.admin.admin import UserLoginFormAdmin, UserRegFormAdmin
+# @site.register_admin
+# def my_user_login_form_admin(UserLoginFormAdmin):
+#     page_schema = 'Amis Login Page'
+#     page = Page.model_validate()
+
+#      async def get_page(self, request: Request) -> Page:
+#         page = await super().get_page(request)
+#         return attach_page_head(page)
+
+
+# 循环引入包内应用
+apps_list = ['demo', 'blog', 'suetactix']
+for app_name in apps_list:
+    # 动态导入模块
+    module = importlib.import_module(f'apps.{app_name}')
+
+    # 检查模块是否有 setup 方法
+    if hasattr(module, 'setup') and callable(getattr(module, 'setup')):
+        module.setup(app)
+    else:
+        print(f"Warning: Module {app_name} does not have a 'setup' method.")
+
+
+# print(NavPageAdmin.get_list_table(request: Request))
+# from core.my_login import CustomUserLoginFormAdmin, CustomUserRegFormAdmin
+# site.register_admin(CustomUserLoginFormAdmin)
+# site.register_admin(CustomUserRegFormAdmin)
+
+
+
 
 # 挂载后台管理系统
 site.mount_app(app)
@@ -55,3 +81,4 @@ async def startup():
 @app.get("/")
 async def index():
     return RedirectResponse(url=site.router_path)
+

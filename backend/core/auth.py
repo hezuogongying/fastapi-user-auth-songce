@@ -12,13 +12,14 @@ class MyUser(BaseUser, table=True):
     parent_id: Optional[int] = Field(None, title="上级", foreign_key="auth_user.id")
     birthday: Optional[date] = Field(None, title="出生日期")
     location: str = Field("", title="位置")
-
+    __table_args__ = {'extend_existing': True}
 
 class MyRole(BaseRole, table=True):
     __tablename__ = "auth_role"  # 数据库表名,必须是这个才能覆盖默认模型
     icon: str = Field("", title="图标")
     is_active: bool = Field(default=True, title="是否激活")
-
+    __table_args__ = {'extend_existing': True}
+    
 
 class MyRoleAdmin(RoleAdmin):
     model = MyRole

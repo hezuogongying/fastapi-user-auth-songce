@@ -10,7 +10,7 @@ sys.path.append(BACKEND_DIR.__str__())
 
 
 class Settings(admin.Settings):
-    name: str = "FastAPI-User-Auth-Demo"
+    name: str = "讼策-律师AI助理后台"
     secret_key: str = ""
     allow_origins: List[str] = []
 

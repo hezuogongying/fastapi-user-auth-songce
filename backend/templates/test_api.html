@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width-scale=1.0">
+    <title>Amis API Example</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/amis/lib/themes/default.css">
+    <script src="https://cdn.jsdelivr.net/npm/amis/lib/index.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            let amis = amisRequire('amis/embed');
+        
+            let config = {
+                type: 'page',
+                title: '我的页面',
+                body: {
+                    type: 'form',
+                    api: '/api/submit-form',
+                    controls: [
+                        {type: 'text', name: 'username', label: '用户名'},
+                        {type: 'password', name: 'password', label: '密码'}
+                    ]
+                }
+            };
+        
+            // 根据条件或用户交互调整配置
+            if (userIsAdmin) {
+                config.body.controls.push({type: 'checkbox', name: 'isAdmin', label: '是否为管理员'});
+            }
+        
+            amis.embed('#root', config);
+        });
+        
+    </script>
+</body>
+</html>

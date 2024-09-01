@@ -8,6 +8,7 @@ from fastapi_amis_admin.admin import (
     RecentTimeSelectPerm,
     SimpleSelectPerm,
     UserSelectPerm,
+    PageAdmin
 )
 from fastapi_amis_admin.amis.components import PageSchema, TableColumn
 from fastapi_amis_admin.crud.parser import LabelField, PropertyField
@@ -19,11 +20,11 @@ from sqlmodel.sql.expression import Select
 from starlette.requests import Request
 
 from apps.blog.models import Article, ArticleStatus, Category, Tag
-
+from fastapi_amis_admin.amis.components import Page
 
 @site.register_admin
 class BlogApp(admin.AdminApp):
-    page_schema = PageSchema(label="博客应用", icon="fa fa-wordpress")
+    page_schema = PageSchema(label="工作动态", icon="fa fa-wordpress")
     router_prefix = "/blog"
 
     def __init__(self, app: "AdminApp"):
@@ -45,7 +46,7 @@ class TagAdmin(admin.ModelAdmin):
 
 
 class ArticleAdmin(AuthSelectModelAdmin, AuthFieldModelAdmin):
-    page_schema = PageSchema(label="文章管理", icon="fa fa-file")
+    page_schema = PageSchema(label="内容管理", icon="fa fa-file")
     model = Article
     # 配置列表展示字段
     list_display = [
@@ -55,7 +56,7 @@ class ArticleAdmin(AuthSelectModelAdmin, AuthFieldModelAdmin):
         Article.status,
         Category.name,
         User.username,
-        TableColumn(type="tpl", label="自定义模板列", tpl='<a href="${source}" target="_blank">ID:${id},Title:${title}</a>'),
+        TableColumn(type="tpl", label="", tpl='<a href="${source}" target="_blank">ID:${id},Title:${title}</a>'),
         Article.create_time,
         Article.description,
         User.nickname.label("nickname"),  # 重命名字段;也可以使用sqlalchemy函数, 例如:
